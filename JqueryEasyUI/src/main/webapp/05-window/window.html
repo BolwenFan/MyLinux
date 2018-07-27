@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+    <base href="http://localhost:8080/"/>
+    <!-- 引入默认主题样式文件 -->
+    <link rel="stylesheet" type="text/css" href="themes/default/easyui.css"/>
+    <!-- 引入图标样式文件 -->
+    <link rel="stylesheet" type="text/css" href="themes/icon.css"/>
+    <!-- 引入jQuery主文件 -->
+    <script type="text/javascript" src="scripts/jquery.min.js"></script>
+    <!-- 引入EasyUI主文件 -->
+    <script type="text/javascript" src="scripts/jquery.easyui.min.js"></script>
+    <!-- 引入本地化文件 -->
+    <script type="text/javascript" src="scripts/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            $("#winOne").window({
+                width:300,
+                height:200,
+                title:"我的窗口",
+                collapsible:true,
+                minimizable:true,
+                maximizable:true,
+                closable:true,
+                modal:false     //模式化窗口，true即一个控件聚焦时其余控件不可用
+            });
+
+            $("#centerBtn").linkbutton({
+                iconCls:"icon-ok",
+                onClick:function () {
+                    $("#winOne").window("center");
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+
+    <div class="easyui-window" id="winOne">第一个窗口</div>
+    <hr/>
+    <a id="centerBtn">居中</a>
+<div></div>
+</body>
+</html>

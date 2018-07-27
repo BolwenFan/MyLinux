@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+    <base href="http://localhost:8080/"/>
+    <!-- 引入默认主题样式文件 -->
+    <link rel="stylesheet" type="text/css" href="themes/default/easyui.css"/>
+    <!-- 引入图标样式文件 -->
+    <link rel="stylesheet" type="text/css" href="themes/icon.css"/>
+    <!-- 引入jQuery主文件 -->
+    <script type="text/javascript" src="scripts/jquery.min.js"></script>
+    <!-- 引入EasyUI主文件 -->
+    <script type="text/javascript" src="scripts/jquery.easyui.min.js"></script>
+    <!-- 引入本地化文件 -->
+    <script type="text/javascript" src="scripts/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#tt").tabs({
+                tools: [
+                    {
+                        title: "添加",
+                        iconCls: "icon-add",
+                        handler: function () {
+                            alert("添加");
+                        }
+                    },
+                    {
+                        title: "保存",
+                        iconCls: "icon-save",
+                        handler: function () {
+                            alert("保存");
+                        }
+                    }
+                ]
+                // onSelect: function (title) { //切换选项卡时监听事件
+                //     alert(title);
+                // },
+                // selected: 2      初始选中的选项卡，索引从0开始
+            });
+
+            $("#getSelected").linkbutton({
+                onClick: function () {
+
+                    // //让标题为“Tab1”的选项卡被选中
+                    // var tab = $("#tt").tabs("select", "Tab1");
+                    // //获取当前被选中的选项卡，此时其实获取到的是panel控件
+                    // var $panel = tab.tabs("getSelected");
+                    // //调用panel控件的refresh方法加载远程数据
+                    // $panel.panel("refresh", "RemoteOneServlet");
+
+
+                    //连缀调用方式
+                    $("#tt").tabs("select", "Tab1")
+                        .tabs("getSelected")
+                        .panel("refresh", "RemoteOneServlet");
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+<div id="tt" class="easyui-tabs" style="width:500px;height:250px;">
+    <div data-options="title:'Tab1',iconCls:'icon-add'">
+        tab1
+    </div>
+    <div data-options="title:'Tab2',iconCls:'icon-edit'">
+        tab2
+    </div>
+    <div data-options="title:'Tab3',iconCls:'icon-refresh'">
+        tab3
+    </div>
+</div>
+
+<hr/>
+<a id="getSelected">选择Tab1并获取选项卡并获取远程数据</a>
+
+</body>
+</html>

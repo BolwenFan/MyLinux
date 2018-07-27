@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+    <base href="http://localhost:9090/"/>
+    <!-- 引入默认主题样式文件 -->
+    <link rel="stylesheet" type="text/css" href="themes/default/easyui.css"/>
+    <!-- 引入图标样式文件 -->
+    <link rel="stylesheet" type="text/css" href="themes/icon.css"/>
+    <!-- 引入jQuery主文件 -->
+    <script type="text/javascript" src="scripts/jquery.min.js"></script>
+    <!-- 引入EasyUI主文件 -->
+    <script type="text/javascript" src="scripts/jquery.easyui.min.js"></script>
+    <!-- 引入本地化文件 -->
+    <script type="text/javascript" src="scripts/easyui-lang-zh_CN.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+
+            // 初始化表单所在的窗口
+            $("#formWindow").window({
+                title: "员工档案管理",
+                width: 300,
+                height: 200,
+                closed: true
+            });
+
+            $("#empForm").form({
+                onSubmit: function () {
+                    $("#formWindow").window("close");
+                },
+                success: function () {
+
+                    // 获取form控件的options数据，也就是属性数据
+                    var options = $("#empForm").form("options");
+
+                    // 获取当前表单的url地址值
+                    var url = options.url;
+
+                    // 刷新一下DataGrid，使用reload方法可以使页面显示的数据保持在当前页
+                    // 为了避免保存操作耗时导致刷新不到新数据，在成功获取到服务器响应数据后再刷新
+                    // 根据url地址的不同执行不同的刷新策略
+                    if (url == "saveEmp") {
+
+                        // 对保存操作来说应该回到第一页查看最新保存的数据
+                        $("#dg").datagrid("load");
+                    }
+
+                    if (url == "updateEmp") {
+                        // 对更新操作来说应该就在当前页刷新数据
+                        $("#dg").datagrid("reload");
+                    }
+
+                    // 清理表单数据
+                    // 由于onSubmit事件的响应函数是在表单真正提交前执行，所以不能在onSubmit事件的响应函数中清理表单，否则会提交空串
+                    // 另外的一个证据是：在onSubmit事件的响应函数中return false能够阻止表单提交
+                    $("#empForm").form("clear");
+                }
+            });
+
+            // 初始化表单的提交按钮
+            $("#formSubmitBtn").linkbutton({
+                iconCls: "icon-save",
+                onClick: function () {
+                    // 提交表单
+                    $("#empForm").form("submit");
+                }
+            });
+
+
+            $("#dg").datagrid({
+                url: "getEmpListPage",
+                columns: [[
+                    {field: 'empId', title: '用户ID', width: 100},
+                    {field: 'empName', title: '姓名', width: 100},
+                    {field: 'empSalary', title: '工资', width: 100},
+                    {field: 'empAge', title: '年龄', width: 100}
+                ]],
+                fitColumns: true,
+                singleSelect: true,
+                pagination: true,
+                fit: true,
+                toolbar: [
+                    {
+                        iconCls: "icon-add",
+                        text: "保存员工",
+                        handler: function () {
+
+                            // 打开表单所在窗口
+                            $("#formWindow").window("open");
+
+                            // 设置表单提交的目标地址
+                            $("#empForm").form({
+                                url: "saveEmp"
+                            })
+                        }
+                    },
+                    {
+                        iconCls: "icon-remove",
+                        text: "删除员工",
+                        handler: function () {
+
+                            // 获取用户选中的行
+                            var selectedEmp = $("#dg").datagrid("getSelected");
+
+                            // 判断用户是否选了一行，即是否为null
+                            if (selectedEmp == null) {
+                                $.messager.alert('员工档案管理', '请至少选择一个员工！', 'warning');
+                                return false;
+                            }
+
+                            // 从selectedEmp中获取员工信息id
+                            // {empId: xxx, empName: "xxx", empSalary: xxx, empAge: xxx}
+                            var empId = selectedEmp.empId;
+
+                            // 把empId发送给后台实现删除
+                            $.messager.confirm('确认对话框', '确定删除吗？', function (r) {
+                                $.ajax({
+                                    type: "post",
+                                    url: "removeEmp",
+                                    data: {
+                                        "empId": empId
+                                    },
+                                    success: function (result) {
+                                        if (result.success) {
+                                            $.messager.show({
+                                                title: '❤系统消息❤',
+                                                msg: "删除成功！",
+                                                timeout: 2000,
+                                                showType: 'slide'
+                                            });
+                                            $("#dg").datagrid("reload");
+                                        } else {
+                                            $.messager.show({
+                                                title: '❤系统消息❤',
+                                                msg: '删除失败！',
+                                                timeout: 2000,
+                                                showType: 'slide'
+                                            });
+                                        }
+                                    }
+                                })
+                            });
+                        }
+                    },
+                    {
+                        text: "更新员工",
+                        iconCls: "icon-edit",
+                        handler: function () {
+
+                            // 获取选中的员工
+                            var selectedEmp = $("#dg").datagrid("getSelected");
+
+                            if (selectedEmp == null) {
+                                $.messager.alert("❤系统消息❤",'请选择至少一个员工！','info');
+                                return false;
+                            }
+
+                            // 当选择了至少一个员工才打开窗口
+                            $("#formWindow").window("open");
+
+                            // 初始化设置表单提交地址
+                            $("#empForm").form({
+                                url:"updateEmp"
+                            });
+
+                            // {empId: xxx, empName: "xxx", empSalary: xxx, empAge: xxx}
+                            // 调用form的load方法并传入参数，将数据填充到表单，根据json的key找表单的name值填充
+                            $("#empForm").form("load",selectedEmp);
+
+                            // 上面两个可以连缀写
+                            // $("#empForm").form({
+                            //     url:"updateEmp"
+                            // }).form("load",selectedEmp);
+                        }
+                    }
+                ]
+
+
+            })
+
+
+        });
+    </script>
+</head>
+
+<body>
+<table id="dg"></table>
+
+<div id="formWindow">
+    <form id="empForm" method="post">
+        <table style="margin-left: auto;margin-right: auto">
+            <tr>
+                <td>编号</td>
+                <td>
+                    <input type="text" name="empId"/>
+                </td>
+            </tr>
+            <tr>
+                <td>姓名</td>
+                <td>
+                    <input type="text" name="empName"/>
+                </td>
+            </tr>
+            <tr>
+                <td>工资</td>
+                <td>
+                    <input type="text" name="empSalary"/>
+                </td>
+            </tr>
+            <tr>
+                <td>年龄</td>
+                <td>
+                    <input type="text" name="empAge"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <a id="formSubmitBtn">保存</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

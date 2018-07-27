@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+    <base href="http://localhost:8080/"/>
+    <!-- 引入默认主题样式文件 -->
+    <link rel="stylesheet" type="text/css" href="themes/default/easyui.css"/>
+    <!-- 引入图标样式文件 -->
+    <link rel="stylesheet" type="text/css" href="themes/icon.css"/>
+    <!-- 引入jQuery主文件 -->
+    <script type="text/javascript" src="scripts/jquery.min.js"></script>
+    <!-- 引入EasyUI主文件 -->
+    <script type="text/javascript" src="scripts/jquery.easyui.min.js"></script>
+    <!-- 引入本地化文件 -->
+    <script type="text/javascript" src="scripts/easyui-lang-zh_CN.js"></script>
+
+    <style type="text/css">
+        div {
+            width: 100px;
+            height: 100px;
+            border: 5px solid red;
+        }
+    </style>
+</head>
+
+
+<body>
+<!-- 控件名称：resizable -->
+<!-- 控件作用：让一个div可以改变大小 -->
+<!-- data-options语法中需要注意的点： -->
+<!-- 1.如果属性值是数字，那么就不用加引号，特别是宽度、高度不要加px -->
+<!-- 2.如果属性值是Boolean值，也不要加引号，否则"false"会被识别为真 -->
+<!-- 3.如果属性值是字符串，那么一定要加引号，否则会被识别为为定义的变量 -->
+<!-- 根本的原则：data-options中的数据会被当作JSON格式由JS执行 -->
+<div class="easyui-resizable" data-options="maxWidth:500,maxHeight:400,minWidth:300,minHeight:200,edge:10,
+handles:'all',disabled:false"></div>
+
+</body>
+</html>

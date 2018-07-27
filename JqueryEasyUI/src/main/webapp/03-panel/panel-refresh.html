@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+    <base href="http://localhost:8080/"/>
+    <!-- 引入默认主题样式文件 -->
+    <link rel="stylesheet" type="text/css" href="themes/default/easyui.css"/>
+    <!-- 引入图标样式文件 -->
+    <link rel="stylesheet" type="text/css" href="themes/icon.css"/>
+    <!-- 引入jQuery主文件 -->
+    <script type="text/javascript" src="scripts/jquery.min.js"></script>
+    <!-- 引入EasyUI主文件 -->
+    <script type="text/javascript" src="scripts/jquery.easyui.min.js"></script>
+    <!-- 引入本地化文件 -->
+    <script type="text/javascript" src="scripts/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            $("#pp").panel({
+                title: '开心的面板',
+                iconCls: 'icon-save',
+                width: 300,
+                height: 200,
+                fit: false,
+                collapsible: true,
+                minimizable: true,
+                maximizable: true,
+                closable: true,
+                onBeforeClose: function () {
+                    //返回false可以阻止关闭
+                    return window.confirm("关闭?")
+                },
+                href:"RemoteOneServlet",
+                loadingMessage:"正在加载数据。。。"
+            });
+
+            $("#btnOne").linkbutton({
+                iconCls:"icon-reload",
+                onClick:function () {
+                    $("#pp").panel("refresh");  //按照原来的地址重新加载数据
+                }
+            });
+
+            $("#btnTwo").linkbutton({
+                iconCls:"icon-reload",
+                onClick:function () {
+                    $("#pp").panel("refresh","RemoteTwoServlet")
+                }
+            })
+        });
+
+
+    </script>
+</head>
+
+<body>
+
+<div style="border: 1px black solid;width: 500px;height: 300px">
+    <div id="pp">
+        面板内容
+    </div>
+</div>
+<hr/>
+<a id="btnOne">刷新面板内容：重新加载原来内容</a>
+<a id="btnTwo">刷新面板内容：访问新地址</a>
+
+</body>
+</html>

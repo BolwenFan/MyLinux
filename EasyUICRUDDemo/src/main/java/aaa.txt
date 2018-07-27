@@ -1,0 +1,88 @@
+
+			question.put("高斌","如何用基于Java配置的方式配置Spring？");
+			question.put("刘毅","SpingMvc中的控制器的注解一般用哪个？有没有别的注解可以替代 ？");
+			question.put("罗家辉","Spring 中的自动装配有哪些限制？");
+			question.put("杨俊龙","将Spring配置到应用开发中有哪三种方式？");
+
+			//第二组
+			//"郝文","蔡均宇","曹凯","高凡","虎才进","兰建喜","林一明","袁泽辉","张豪杰","张立刚"
+			question.put("郝文", "Log4j一共有几个常用级别？分别是哪些？级别的高低有什么区别？");
+			question.put("蔡均宇", "什么是MVC？MVC有什么作用？");
+			question.put("曹凯", "简要描述cookie和session，以及他们的运行原理？");
+			question.put("高凡", "JSP有哪些内置对象？作用分别是什么？");
+			question.put("虎才进", "简述JQuery 中方法empty和remove区别？");
+			question.put("兰建喜", "forward 和 redirect 的区别？");
+			question.put("林一明", "如何避免JSP页面自动生成session对象？为什么要这么做？");
+			question.put("袁泽辉", "GET请求和POST请求的区别？");
+			question.put("张豪杰", "什么是JSTL标签库？它的作用是什么？最主要的是哪个库？");
+			question.put("张立刚", "JQuery对象和dom对象如何相互转化？");
+
+			//第三组
+			//"刘伟伟","梁东全","李锦浩","黄诗勇","何鸿谦","傅子锐","孙俊伟","王思栋","朴龙学","陈泽豪"
+			question.put("刘伟伟", "简述String 、StringBuffer和StringBuilder的区别？");
+			question.put("梁东全", "简述Overload和Override的区别。Overloaded的方法是否可以改变返回值的类型？");
+			question.put("李锦浩", "简述final、finally、finalize的区别？");
+			question.put("黄诗勇", "简述抽象类和接口的区别？");
+			question.put("何鸿谦", "简述ArrayList,Vector, LinkedList的存储性能和特性？");
+			question.put("傅子锐", "是否可以从一个static方法内部发出对非static方法的调用？原因是什么？");
+			question.put("孙俊伟", "多线程有几种实现方法？同步有几种实现方法？");
+			question.put("王思栋", "创建一个对象都在内存中做了什么事情？不用考虑静态代码块<br>public static void main(String[] args){<br>Person p = new Person();<br>}");
+			question.put("朴龙学", "简述线程的5大状态？");
+			question.put("陈泽豪", "如何以最快的速度将变量a由2变成8？");
+
+			//第四组
+			//"程文锋","胡志龙","刘百庄","柳文强","彭松","肖刚","朱浅雨","欧阳宇飞","焦启轩","王飞"
+			question.put("程文锋", "简述异步请求的流程？");
+			question.put("胡志龙", "都有哪些类加载器？简述Java的双亲委派机制？以及为何要这样设计");
+			question.put("刘百庄", "简述maven的依赖原则");
+			question.put("柳文强", "简述RBAC权限模型的四种级别？");
+			question.put("彭松", "Maven依赖范围常用的有哪几种？作用范围分别是什么？");
+			question.put("肖刚", "简述Maven中聚合的作用？");
+			question.put("朱浅雨", "在众筹项目中，是如何控制访问权限的？请分后台用户登陆前和用户登陆后这两个时间段回答 ");
+			question.put("欧阳宇飞", "什么是同步请求，什么是异步请求？同步和异步的区别？使用JQuery实现异步请求有几种方式？");
+			question.put("焦启轩", "简述 RBAC？（重复问题）");
+			question.put("王飞", "什么是绝对路径，什么是相对路径？");
+
+			//第五组
+			//"李高山","赵亚文","简巍巍","叶东成","郑桂春","施勇强","魏守强","杨梦恒","周盼","唐骏",
+			question.put("李高山", "什么是集群？什么是分布式？");
+			question.put("赵亚文", "什么是反ACID模型？");
+			question.put("简巍巍", "请简述乐观锁和悲观锁的区别？Redis采用的何种策略及原因？");
+			question.put("叶东成", "如何实时查看一个文本末尾新增的内容(比如log日志文件),如何退出查看？");
+			question.put("郑桂春", "查看文件内容有哪些命令可以使用？");
+			question.put("施勇强", "test目录下有一目录dir(其目录下有jpg格式图片，任意子目录下也有jpg格式图片)，试用Linux命令查出dir目录里所有jpg图片");
+			question.put("魏守强", "RDB和AOF各自的优劣势？");
+			question.put("杨梦恒", "linux中VIM编辑器的分为哪三种工作模式？并举例说明怎样进入。");
+			question.put("周盼", "请说出redis支持的五大数据类型？");
+			question.put("唐骏", "为什么redis需要把所有数据放到内存中？");
+
+			//第六组
+			//"龙绪昊","沈章东","陈和伟","李明珠","狄沈栋","潘超","柯欲文","吴才进","曹庭建","刘云志",
+			question.put("龙绪昊", "Activiti 的常用服务类有哪些？ 它们的作用是什么？");
+			question.put("沈章东", "简述Springboot自动配置的原理？");
+			question.put("陈和伟", "spring cloud中采用什么断路器技术，简述其作用？");
+			question.put("李明珠", "简述众筹项目的架构？用了哪些框架？");
+			question.put("狄沈栋", "使用 SpringBoot 进行项目开发有什么好处？");
+			question.put("潘超", "SpringBoot 常用的 starter 有哪些？");
+			question.put("柯欲文", "开发中如何使用 Spring Boot 热部署？");
+			question.put("吴才进", "FreeMarker 模板引擎中常用的语句有哪些？");
+			question.put("曹庭建", "Activiti 框架中都有哪些常用网关？");
+			question.put("刘云志", "Spring Cloud如何实现服务的注册和发现？");
+
+			//第七组
+			//"陈雅文","范博文","覃田爽","王国华","李俊元","陈欢","黄远鹏","周云飞","孟贤","赵东"
+			question.put("陈雅文", "简述数据库的4种隔离级别？");
+			question.put("范博文", "注册Jdbc驱动程序的三种方式？");
+			question.put("覃田爽", "简述什么是PRIMARY KEY 主键约束？");
+			question.put("王国华", "当多个事务同时访问数据库中相同的数据时，如果没有采取必要的隔离机制，可能会导致哪些并发问题？");
+			question.put("李俊元", "在employees表中有department_id和salary两列 	<br>如下SQL语句想要查询到什么数据？该语句是否存在问题？如果有,请写出正确的语句？ "
+					+ "<br>SELECT department_id,MAX(salary) "
+					+ "<br>FROM employees "
+					+ "<br>GROUP BY department_id "
+					+ "<br>WHERE AVG(salary) >= 8000 LIMIT 2 "
+					+ "<br>ORDER BY department_id DESC");
+			question.put("陈欢", "MyBatis的参数传递 对于多个普通数据类型，传递方式有哪几种？");
+			question.put("黄远鹏", "MyBatis中使用#和$书写占位符有什么区别？");
+			question.put("周云飞", "Mybatis中的#和$有什么区别？");
+			question.put("孟贤", "MyBatis中用于实现动态SQL的元素主要有哪些？");
+			question.put("赵东", "union和union all有什么不同？");

@@ -1,0 +1,273 @@
+1、如何用基于Java配置的方式配置Spring？
+    Spring对Java配置的支持是由@Configuration注解和@Bean注解来实现的。由@Bean注解的方法将会实例化、配置和初始化一个新对象，这个对象将由Spring的IoC容器来管理。
+    @Bean声明所起到的作用与<bean/> 元素类似。被@Configuration所注解的类则表示这个类的主要目的是作为bean定义的资源。
+    被@Configuration声明的类可以通过在同一个类的内部调用@bean方法来设置嵌入bean的依赖关系。
+
+2、Spring管理事务有几种方式?
+    (1)编程式事务，在代码中硬编码。
+    (2)声明式事务，在配置文件中配置：
+       	a:基于XML的声明式事务
+       	b:基于注解的声明式事务
+
+3、简述下事务的4大特性（ACID）:
+    原子性 Atomicity ：事务是数据库的逻辑工作单位，它对数据库的修改要么全部执行，要么全部不执行。
+	一致性 Consistemcy ：事务前后，数据库的状态都满足所有的完整性约束。
+	隔离性 Isolation ：并发执行的事务是隔离的，一个不影响另一个。
+		如果有两个事务，运行在相同的时间内，执行相同的功能，事务的隔离性将确保每一事务在系统中认为只有该事务在使用系统。
+		这种属性有时称为串化，为了防止事务操作间的混淆，必须串行化或序列化请求，使得在同一时间仅有一个请求用于同一数据。
+		通过设置数据库的隔离级别，可以达到不同的隔离效果。
+	持久性 Durability ：在事务完成以后，该事务所对数据库所作的更改便持久的保存在数据库之中，并不会被回滚。
+
+4、关于springIOC容器的问题；IOC容器其全称为inverse of control,也即是控制反转
+    (1)请问怎么理解控制？谁控制谁，这样对我们的开发有什么好处？
+    (2)怎么理解反转，反转是什么意思？
+         Answer1：原始的编程开发我们创建的对象的生命周期以及依赖都是我们自己控制。现在引入IOC容器可以代替我们程序员自己进行对象的控制和创建。
+         所以很显然控制的主体就是IOC容器，我们的对象的外部资源获取。
+         好处就是：①减低了程序的耦合度；
+         		  ②提升了编程效率；
+         		  ③方便了测试人员的测试和维护；
+         		  ④使程序的整体架构变得灵活多变；
+         Answer2：反转的意思是对对象的控制权的反转。主要对于对象的依赖注入，现在需要由IOC容器代替我们完成这个操作，而被控制的对象只能被动的接受。
+
+5、请说下@Autowired注入的过程？
+    首先，根据类型查找，如果查找到一个就直接注入，如果查找到多个，可以通过数组或集合《必须指定泛型》来接受多个；
+	或者：根据名称再进行查找，如果多个对象中的名字之一与属性名称一致，直接注入。如果多个对象的名称没有与之匹配的，报错；
+
+6、@ModelAttribute三个常见作用是什么？
+    (1)被标注了@ModelAttribute的方法都会在Controller的目标方法之前执行。
+    (2)目标方法的参数（JavaBean对象）会先从隐含模型中获取值传入。
+    (3)@ModelAttribute被标注在目标的参数上，参数值会按照指定的key从隐含模型中获取值。
+
+7、SpingMvc中的控制器的注解一般用哪个？有没有别的注解可以替代 ？
+    一般用@Conntroller注解，表示是表现层，@Component注解同样可以做到，所以是可以替代的
+    开发中控制器优先使用@Controller注解，因为可以更好的区分模块的功能
+    （@Controller注解的作用是把标注的类加入IOC容器，@Component注解同样可以做到，所以是可以替代的。(题外话)@RestController等于@Controller+@ResponseBody）
+
+8、Spring 中的自动装配有哪些限制？
+    如果使用了构造器注入或者 setter 注入，那么将覆盖自动装配的依赖关系。
+    基本数据类型的值、字符串字面量、类字面量无法使用自动装配来注入。
+    优先考虑使用显式的装配来进行更精确的依赖注入而不是使用自动装配。
+
+6、将Spring配置到应用开发中有哪三种方式？
+    ①基于XML的配置	②基于注解的配置    ③基于Java的配置
+
+7、Log4j一共有几个常用级别？分别是哪些？级别的高低有什么区别？
+    DEBUG level：DEBUG级别打印信息粒度最细，适合调试程序；
+    INFO level：消息在粗粒度级别上突出强调应用程序的运行过程；
+    WARN level：表明会出现潜在错误的情形；
+    ERROR level：指出虽然发生错误事件，但仍然不影响系统的继续运行；
+    FATAL level：指出每个严重的错误事件将会导致应用程序的退出。
+
+8、什么是MVC？MVC有什么作用？
+    MVC：Model 模型、 View 视图、Controller 控制器。
+    Model模型：将与业务逻辑相关的数据封装为具体的Java类，其中不掺杂任何与数据处理相关的代码——JavaBean/domain/entity。
+    View视图：只负责数据和界面的显示，不接受任何与显示数据无关的代码，便于程序员和美工的分工合作——JSP/HTML。
+    Controller控制器：只负责接收请求，调用业务层的代码处理请求，然后派发页面，是一个“调度者”的角色——Servlet。
+    MVC 最早出现在JavaEE三层中的Web层，它可以有效的指导Web层的代码如何有效分离，单独工作。
+    MVC的理念是将软件代码拆分成为组件，单独开发，组合使用（目的还是为了解耦合）
+
+9、简要描述cookie和session，以及他们的运行原理？
+    Cookie：浏览器端保存数据的一种技术，可以是服务器发送给浏览器的数据，让其暂存
+    Session：服务器端保存会话数据的一种技术。
+    Cookie运行原理：浏览器发请求给服务器，服务器可以创建一个Cookie让浏览器保存，浏览器收到响应，发现响应头中会有Set-Cookie字段。浏览器就会按照要求保存内容，
+        浏览器以后访问对应的项目就会带上cookie。
+    会话控制（Session）原理：当新会话进来，服务器创建一个session对象，每个session对象有一个id与他对应，服务器创建好session对象后，将session的id作为cookie发给浏览器，
+        浏览器保存JSESSIONID这个cookie，以后只要访问这个项目，就会带上JSESSIONID，服务器收到任何一个请求，如果要获取session，服务器会在请求头中获取JSESSIONID的值，
+        按照值去找对应的Session对象。如果找到了，使用找到的对象。如果没找到，创建新的session对象。回到第一步。
+
+10、JSP有哪些内置对象？作用分别是什么？
+    JSP一共有9个内置对象：
+        request:负责得到客户端请求的信息，对应类型：javax.servlet.http.HttpServletRequest
+        response:负责向客户端发出响应，对应类型：javax.servlet.http.HttpServletResponse
+        session:负责保存同一客户端一次会话过程中的一些信息，对应类型：javax.servlet.http.httpsession
+        out:负责管理对客户端的输出，对应类型：javax.serlvet.jsp.jspwriter
+        application:表示整个应用环境的信息，对应类型：javax.servlet.servletcontext
+        config:表示ServletConfig，对应类型：javax.servlet.servletconfig
+        exception:表示页面中发生的异常，可以通过它获得页面异常信息，对应类型：java.lang.exception
+        pagecontext:表示这个JSP页面上下文，对应类型：javax.servlet.jsp.pagecontext
+        page:表示当前JSP页面本身
+
+11、简述JQuery 中方法empty和remove区别？
+    empty  是清空节点，它能清空元素中所有的后代节点，但不能删除自己本身这个节点
+    remove   该节点与该节点所包含的所有后代节点将同时被删除提供传递一个筛选的表达式，用来指定删除选中合集中的元素
+
+12、forward 和 redirect 的区别？
+    forward 转发：是服务器内部的重定向，服务器直接访问目标地址的 url网址，把里面的东西读取出来，但是客户端并不知道，因此用forward的话，客户端浏览器的网址是不会发生变化的。
+        由于在整个定向的过程中用的是同一个request，因此forward会将request的信息带到被重定向的jsp或者servlet中使用。
+    redirect 重定向：是客户端的重定向，是完全的跳转。即服务器返回的一个url给客户端浏览器，然后客户端浏览器会重新发送一次请求，到新的url里面，因此浏览器中显示的url网址会发生变化。
+        因为这种方式比forward多了一次网络请求，因此效率会低于forward。不能够访问WEB-INF目录下的资源
+
+13、如何避免JSP页面自动生成session对象？为什么要这么做？
+    在默认情况下，在对一个JSP页面发出请求时，如果session还没有建立，那么JSP页面会自动为请求创建一个session对象，但是session是比较消耗资源的，如果没有必要保持和使用session，就不应该创建session。
+    例如一些只用来宣传产品的网页，往往没必要使用session来保存信息，可以在JSP中使用page指令进行设置，避免JSP页面为每个请求都自动创建session。
+    实例代码如下：<%@page session=\ false\ %>
+
+14、GET请求和POST请求的区别？
+    GET请求的特点：
+        (1)浏览器地址栏上是action属性值?请求的参数，请求的参数的格式是：url?name=value&name=value问号后面是提交的参数（也就是表单项的信息）
+        (2)GET请求不安全
+    POST请求的特点：
+        (1)浏览器地址栏上只有action的属性值
+        (2)POST请求安全
+        (3)提交的数据，没有长度限制
+        
+15、什么是JSTL标签库？它的作用是什么？最主要的是哪个库？
+    jstl标签库就是JSP标准标签库
+    jstl标签库是为了替换代码脚本使jsp页面变得简洁
+    最主要的是核心标签库，即core那个库
+
+16、JQuery对象和dom对象如何相互转化？
+    dom对象 转 JQuery对象：对dom对象进行包装 var $jqeuryObj = $(domObj)
+    JQuery对象 转 dom对象: 根据下标取出jquery对象中的每一个元素，就是dom对象，var domObj = $buttonObj[下标]
+
+17、简述String 、StringBuffer和StringBuilder的区别？
+    String:不可变的字符序列，任何对String的改变都会引发新的String对象的生成,底层用char[]保存数据
+    StringBuffer:可变的字符序列，任何对它所指代的字符串的改变都不会产生新的对象,底层用char[]保存数据的，支持并发操作，线程安全的
+    StringBuilder:可变的字符序列，底层用char[]保存数据的，不支持并发操作，线程不安全的,性能比StringBuffer高
+
+18、简述Overload和Override的区别。Overloaded的方法是否可以改变返回值的类型？
+    Overload：重载，同一个类中，方法名相同，参数列表不同。与返回值类型无关。 可以改变返回值的类型，因为它与返回值类型无关。
+    Override：重写，存在于子父类，或者子父接口中，方法声明相同。子类方法不能抛出比父类方法范围更大的异常；子类方法返回值不能超过父类方法返回值的范围；
+
+19、简述final、finally、finalize的区别？
+    final：用来声明属性，方法和类，分别表示属性不可变，方法不能被重写，类不被继承能
+    finally：异常处理语句的一部分，表示总是执行
+    finalize：Object类中的一个方法，用来调用垃圾回收机制的 GC
+
+20、简述抽象类和接口的区别？
+    (1)抽象类有构造器,接口没有
+    (2)抽象类中可以有成员变量,而接口没有（接口中的成员变量都会自动成为常量）
+    (3)抽象类中可以有非抽象的普通方法,而接口则全部都是抽象方法[JDK1.8中可以有实现方法]
+    (4)抽象类中的抽象方法访问权限可以是public protected,接口的方法则必须是public
+    (5)抽象类中可以有静态方法,接口中不能有
+    (6)一个类只能继承一个抽象类,但可以实现多个接口
+
+21、简述ArrayList,Vector, LinkedList的存储性能和特性？
+    ArrayList 主要实现类 ：底层是用数组实现的，线程不安全的，比Vector效率高。增删慢 查找快。
+    Vector：底层是用数组实现的，线程安全的，效率低
+    LinkedList:底层是用链表实现的，线程不安全的，增删快，查找慢
+
+22、是否可以从一个static方法内部发出对非static方法的调用？原因是什么？
+    不可以。因为非static方法是要与对象关联在一起的，必须创建一个对象后，才可以在该对象上进行方法调用，而static方法调用时不需要创建对象，
+    可以直接调用。也就是说，当一个static方法被调用时，可能还没有创建任何实例对象，如果从一个static方法中发出对非static方法的调用，
+    那个非static方法是关联到哪个对象上的呢？这个逻辑无法成立，所以，一个static方法内部不可以发出对非static方法的调用。
+
+23、多线程有几种实现方法？同步有几种实现方法？
+    多线程有四种实现方法：
+        (1)继承 Thread 方法：
+            创建一个类并继承Thread > 重写Thread中的run方法 > 创建Thread子类的对象 > 调用Thread子类对象的start方法
+        (2)实现 Runnable 接口：
+            实现Runnable接口 > 重写run方法 > 创建Runnable接口实现类的对象 > 创建Thread对象并将Runnable实现类的对象作为参数传递给Thread > 调用Thread对象的start方法
+        (3)实现 Callable 接口：
+            实现Callable接口 > 重写call方法 > 创建Callable的实现类的对象 > 创建FutureTask对象，并将Callable实现类的对象作为实参传入 > 创建Thread的对象并调用start方法
+        (4)线程池：
+            调用Executors 类的静态方法newFixedThreadPool int nThreads ，创建一个可重用的、具有固定线程数的线程池ExecutorService对象
+            > 创建Runnable实例，作为线程执行任务 > 调用ExecutorService对象的submit  提交Runnable实例 > 调用ExecutorService对象的shutDown  方法关闭线程池
+    同步有两种实现方法：
+        synchronized
+        wait与notify
+
+24、创建一个对象都在内存中做了什么事情？不用考虑静态代码块public static void main String[] args {Person p = new Person   }
+    (1)先将硬盘上指定位置的Person.class文件加载进内存
+    (2)执行main方法时，在栈内存中开辟了main方法的空间（压栈-进栈），然后在main方法的栈区分配了一个变量p。
+    (3)在堆内存中开辟一个实体空间，分配了一个内存首地址值。new
+    (4)进行默认初始化
+    (5)进行显示初始化
+    (6)进行代码块初始化
+    (7)调用构造函数，进行构造函数初始化
+    (8)将首地址赋值给p，p变量就引用了该实体。（指向了该对象）
+    
+25、简述线程的5大状态？
+    1 新建状态 2 就绪状态 3 运行状态 4 阻塞状态 5 死亡状态
+
+26、如何以最快的速度将变量a由2变成8？
+    通过位运算int a=2  a<<=2
+
+27、简述异步请求的流程？
+    (1)发起同步连接请求，跳转列表页面 无数据展示，只是静态页面展示
+    (2)发起异步ajax请求，加载数据，局部刷新页面
+
+28、都有哪些类加载器？简述Java的双亲委派机制？以及为何要这样设计
+    ①启动类加载器 ②扩展类加载器 ③应用类加载器
+    双亲委派机制描述 某个特定的类加载器在接到加载类的请求时，首先将加载任务委托给父类加载器，依次递归，如果父类加载器可以完成类加载任务，就成功返回；只有父类加载器无法完成此加载任务时，才自己去加载。
+    为什么要使用 ：防止内存中出现多份同样的字节码
+    
+29、简述maven的依赖原则
+    (1)路径最短者优先
+    (2)路径相同时先声明者优先
+    
+30、简述RBAC权限模型的四种级别？
+    四部分组成：⑴用户（User）⑵角色（Role）⑶许可（Permission）⑷会话（Session）
+    RABC0，核心模型, 其他的级别都是建立在该级别的基础上
+    RABC1，基于RBAC0模型，进行了角色的分层，也就是说角色上有了上下级的区别。
+    RBAC2，也是基于RBAC0模型的基础上，进行了角色的访问控制
+    RBAC3，也就是最全面级的权限管理，它是基于RBAC2的基础上，将RBAC1和RBAC2进行整合了，最全面，也最复杂的。
+
+31、Maven依赖范围常用的有哪几种？作用范围分别是什么？
+    Compile：main和test目录下的类可以使用、可以部署、可以传递
+    Test：只有test目录下的类可以使用，main目录下的类不能使用、不能部署、不能传递
+    Privided：main和test目录下的类可以使用、不能部署、不能传递
+
+32、简述Maven中聚合的作用？
+    聚合之后就可以批量进行Maven工程的构建、安装、清理工作
+
+33、在众筹项目中，是如何控制访问权限的？请分后台用户登陆前和用户登陆后这两个时间段回答
+    (1)后台用户登陆前：用户没有登陆就能访问所有页面。 解决方法：& 定义一个拦截器Interceptor为loginInterceptor继承HandlerInterceptorAdapter，
+        在其preHandle方法中将首页，登陆，注册，dologin，doassign页面加入到白名单中，将request域中取出来的url与白名单进行验证，
+        如果白名单中有就放行，如果没有就跳回登陆页面，在mvc的xml中声明该拦截器。
+    (2)用户登陆后：所有的登陆用户都能点击并访问所有后台界面。 解决方法：& 1.给用户分配角色，给角色分配权限。& 2.在用户登陆验证的流程中加入用户permission节点的查询与封装进一个根节点中以供页面显示。提取所有后台页面的许可树html，通过ztree显示该用户的所有许可，封装成main .jsp页面。所有页面包含该页面。
+
+什么是同步请求，什么是异步请求？同步和异步的区别？使用JQuery实现异步请求有几种方式？
+什么是绝对路径，什么是相对路径？
+
+什么是集群？什么是分布式？
+什么是反ACID模型？
+请简述乐观锁和悲观锁的区别？Redis采用的何种策略及原因？
+如何实时查看一个文本末尾新增的内容 比如log日志文件 ,如何退出查看？
+查看文件内容有哪些命令可以使用？
+test目录下有一目录dir 其目录下有jpg格式图片，任意子目录下也有jpg格式图片 ，试用Linux命令查出dir目录里所有jpg图片
+RDB和AOF各自的优劣势？
+linux中VIM编辑器的分为哪三种工作模式？并举例说明怎样进入。
+请说出redis支持的五大数据类型？
+为什么redis需要把所有数据放到内存中？
+
+Activiti 的常用服务类有哪些？ 它们的作用是什么？
+简述Springboot自动配置的原理？
+spring cloud中采用什么断路器技术，简述其作用？
+简述众筹项目的架构？用了哪些框架？
+使用 SpringBoot 进行项目开发有什么好处？
+SpringBoot 常用的 starter 有哪些？
+开发中如何使用 Spring Boot 热部署？
+FreeMarker 模板引擎中常用的语句有哪些？
+Activiti 框架中都有哪些常用网关？
+Spring Cloud如何实现服务的注册和发现？
+简述数据库的4种隔离级别？
+注册Jdbc驱动程序的三种方式？
+简述什么是PRIMARY KEY 主键约束？
+当多个事务同时访问数据库中相同的数据时，如果没有采取必要的隔离机制，可能会导致哪些并发问题？
+在employees表中有department_id和salary两列 	如下SQL语句想要查询到什么数据？该语句是否存在问题？如果有,请写出正确的语句？
+SELECT department_id,MAX salary
+FROM employees
+GROUP BY department_id
+WHERE AVG salary  >= 8000 LIMIT 2
+ORDER BY department_id DESC
+MyBatis的参数传递 对于多个普通数据类型，传递方式有哪几种？
+MyBatis中使用#和$书写占位符有什么区别？
+Mybatis中的#和$有什么区别？
+MyBatis中用于实现动态SQL的元素主要有哪些？
+union和union all有什么不同？
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+    <base href="http://localhost:8080/"/>
+    <!-- 引入默认主题样式文件 -->
+    <link rel="stylesheet" type="text/css" href="themes/default/easyui.css"/>
+    <!-- 引入图标样式文件 -->
+    <link rel="stylesheet" type="text/css" href="themes/icon.css"/>
+    <!-- 引入jQuery主文件 -->
+    <script type="text/javascript" src="scripts/jquery.min.js"></script>
+    <!-- 引入EasyUI主文件 -->
+    <script type="text/javascript" src="scripts/jquery.easyui.min.js"></script>
+    <!-- 引入本地化文件 -->
+    <script type="text/javascript" src="scripts/easyui-lang-zh_CN.js"></script>
+
+    <style type="text/css">
+        div {
+            width: 100px;
+            height: 100px;
+            border: 5px solid red;
+        }
+    </style>
+    <!--
+    //通过id选择器获取到div的jQuery对象，然后调用和控件同名的方法就可以生成对应的控件
+    //控件的属性可以用JSON格式传入控件名方法对控件初始化
+    //如果希望在控件触发相应事件后执行我们指定的操作，那么就需要用一个回调函数给事件属性赋值
+
+    //onStartResize: function(){
+    //$("#showContent").append("开始改变大小");
+    //}
+
+    //事件名: 回调函数
+    //触发事件后，执行回调函数
+    -->
+
+    <script type="text/javascript">
+
+        //在页面上所有控件都加载完成后执行具体操作
+        $(function () {
+            $("#rr").resizable({
+                onStartResize: function () {
+                    $("#show").text("开始变化")
+                },
+                onStopResize: function () {
+                    $("#show").text("结束变化")
+                },
+                onResize: function () {
+                    $("#show").text("正在变化，一直在调用此函数")
+                }
+            })
+        });
+
+
+    </script>
+</head>
+
+<body>
+
+<div class="easyui-resizable" id="rr"></div>
+
+<hr/>
+<div id="show"></div>
+
+</body>
+</html>

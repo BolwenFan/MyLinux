@@ -1,0 +1,28 @@
+---
+spring:
+  datasource:
+    name: mydb
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/jquery_easyui_demo?useSSL=false
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis:
+  mapper-locations: classpath*:/mybatis/mappers-*.xml
+  type-aliases-package: com.atguigu.**.bean
+
+
+---
+pagehelper:
+#  dialect\uFF1A\u6570\u636E\u5E93\u65B9\u8A00\uFF0C\u6307\u5B9A\u5F53\u524D\u5177\u4F53\u4F7F\u7528\u7684\u6570\u636E\u5E93
+  helper-dialect: mysql
+#  \u5C06\u524D\u53F0\u9875\u9762\u4F20\u5165\u7684\u9875\u7801\u4FEE\u6B63\u52301~\u603B\u9875\u6570\u4E4B\u95F4\u7684\u8303\u56F4
+  reasonable: true
+#  support-methods-arguments: true
+#  params: count=countSql
+
+---
+logging:
+  level: debug
+
+

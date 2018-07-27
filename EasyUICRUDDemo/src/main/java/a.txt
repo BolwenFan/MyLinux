@@ -1,0 +1,207 @@
+
+							  3
+											  & 2）、
+											  & 3）、
+							  4
+											  & 1）、。
+											  & 2）、。
+											  & 3）、
+											  & 4）、
+											  & 5）、
+			   高凡 ,  1
+
+			   虎才进 ,  1
+								  2
+			   兰建喜 ,  1
+							    2
+							  					   & 2.
+							  					   & 3.
+			   林一明 ,  1
+							    2
+			   袁泽辉 ,  1
+							  				  & 2
+							  				  & 3
+							    2
+							  				  & 1
+							  				  & 2
+							  				  & 3
+			   张豪杰 ,  1
+							    2
+							    3
+			   张立刚 ,  1   2 &
+
+			 第三组
+			   刘伟伟 ,
+
+
+			   梁东全 ,  1
+							    2
+							    3 Overload的方法
+			   李锦浩 ,  1
+							   2
+							   3
+			   黄诗勇 ,
+							    2
+							    3
+							    4
+							    5
+							    6
+			   何鸿谦 ,  1
+							    2
+							    3
+			   傅子锐 ,
+			   孙俊伟 ,   & 1.创建一个类并继承Thread，
+													  & 2.，
+													  & 3.，
+													  & 4.。
+											  2 &  1.，
+															   & 2.，
+															   & 3.，
+															   & 4.，
+															   & 5.。
+									  	      3    & 1.，
+									  	    				   & 2.，
+									  	    				   & 3.，
+									  	    				   & 4. ，
+									  	    				   & 5.。
+									  	      4  & 1.
+									  	    	    & 2.
+									  	    	    & 3.
+									  	    	    & 4.
+
+			   王思栋 ,  1 。
+					   2
+					   3
+					   4 。
+					   5 。
+					   6 。
+					   7 。
+					   8
+			   朴龙学 ,
+			   陈泽豪 ,
+
+			 第四组
+			   程文锋 ,
+			   胡志龙 ,  1 有哪些加载器
+							    2
+							    3
+			   刘百庄 ,
+			   柳文强 ,  1 RBAC级别 -    。
+
+							   2 RBAC级别 -
+							   3 RBAC级别 - RABC2，。
+							   4 RBAC级别 - RBAC3，
+			   彭松 ,  1
+							  2
+							  3 		&
+			   肖刚 ,
+			   朱浅雨 ,  1
+							  2
+							  3 登陆用户能通过输入url访问不在其权限范围内的页面。解决方法：& 定义一个访问权限拦截器，将permission中取出来的全部url封装到list中，如果request中取出来的url（request.getRequestUrl  ）不包含在该list中，就返回true说明不需要验证，直接放行。若包含就在session中取出该用户的所有许可地址，验证输入的地址是否包含在许可地址中，不包含就跳转error页面，包含就放行。在mvc中声明该拦截器。另外还需要改下登陆验证流程，将Permission的Url取出并封装成list放到session域对象中。
+			   欧阳宇飞 ,  1 同步的思想是：所有的操作都做完，才返回给用户。这样用户在线等待的时间太长，给用户一种卡死了的感觉，这种情况下，用户不能关闭界面，如果关闭了，即迁移程序就中断了。同步，是所有的操作都做完，才返回给用户结果。即写完数据库之后，再响应用户，用户体验不好。
+					  2 异步将用户请求放入消息队列，并反馈给用户，系统迁移程序已经启动，你可以关闭浏览器了。然后程序再慢慢地去写入数据库去。这就是异步。但是用户没有卡死的感觉，会告诉你，你的请求系统已经响应了。你可以关闭界面了 异步，不用等所有操作等做完，就相应用户请求。即先相应用户请求，然后慢慢去写数据库，用户体验较好。
+					  3 方式：& 1、$.ajax {} & 2、$.get {} 		& 3、$.post {}
+			   焦启轩 ,  就是用户通过角色与权限进行关联。简单地说，一个用户拥有若干角色，每一个角色拥有若干权限。      	这样，就构造成“用户-角色-权限”的授权模型。在这种模型中，用户与角色之间，角色与权限之间，一般都是多对多的关系
+			   王飞 ,  完整的描述文件或资源位置的路径是绝对路径
+					  本地路径：以盘符开始的路径称之为绝对路径, c:/test/test.html
+					  网络路径：以协议，域名,端口号所组合的路径为绝对路径
+					  http: localhost:8080/atcrowdfunding/image/xxx.jpg
+					  http: www.xxx.com/test/index.html
+					   	相对于某一位置描述文件或资源的路径称为相对路径
+					  相对路径需要一个参考的位置，一般取值为当前资源的访问路径作为参考路径
+
+			 第五组
+
+			   李高山 ,  1多个Tomcat服务器上运行的是同一个Web应用的多份拷贝，集群服务器之间是同构。
+					  			2多个Tomcat服务器上各自运行的一个Web应用的一个模块，分布式服务器之间是异构的。
+			   赵亚文 ,  1 Basically Available 基本可用：支持分区失败 e.g. sharding碎片划分数据库
+					  			2 Soft state软状态：状态可以有一段时间不同步，异步。
+					  			3 Eventually consistent 最终一致：最终数据是一致的就可以了，而不是时时高一致。
+			   简巍巍 ,  1 乐观锁：对当前环境的判断是：发生碰撞的几率很小，可以在操作前假设不会发生碰撞，不锁定数据，以达到更好的性能。万一发生了碰撞，放弃自己的操作，不会导致数据不一致。
+					  			2 悲观锁：对当前环境的判断是：很有可能发生碰撞，所以操作前需要给数据加锁，避免数据不一致情况。
+					  			3 Redis采取的是乐观锁的策略。因为Redis大部分应用场景是扮演缓存的角色，写操作相对少，碰撞的几率相对低。所以可以通过采用乐观锁策略已到达更好性能。
+			   叶东成 ,  tail & -f 加文件名  Ctrlc退出
+			   郑桂春 ,  1 vim 文件名 #编辑方式查看，可修改
+					  			2 cat 文件名 #显示全部文件内容
+					  			3 more 文件名 #分页显示文件内容
+					  			4 less 文件名 #与 more 相似，更好的是可以往前翻页
+					  			5 tail 文件名 #仅查看尾部，还可以指定行数
+					  			6 head 文件名 #仅查看头部,还可以指定行数
+			   施勇强 ,  find &   dir1 &  -name &  *.jpg
+					  			& -name：指定字符串作为寻找文件或目录的范本样式
+			   魏守强 ,  1 RDB优势：适合大规模的数据恢复，速度较快
+					  			2 RDB劣势：会丢失最后一次快照后的所有修改，不能绝对保证数据的高度一致性和完整性。Fork的时候，内存中的数据被克隆了一份，大致2倍的膨胀性需要考虑，但上述成立有条件，Linux也有优化手段
+					  			3 AOF优势：选择appendfsync always方式运行时理论上能够做到数据完整一致，但此时性能又不好。文件内容具备一定可读性，能够用来分析Redis工作情况。
+					  			4 AOF劣势：持久化相同的数据，文件体积比RDB大，恢复速度比RDB慢。效率在同步写入时低于RDB，不同步写入时与RDB相同。
+			   杨梦恒 ,  一般模式，编辑模式（输入“i/I或a/A或o/O或r/R”），指令模式（输入“:或/或？”）
+			   周盼 ,  zset类型，set类型，hash类型，list类型，string类型
+			   唐骏 ,  1 Redis为了达到最快的读写速度将数据都读到内存中
+					  			2 并通过异步的方式将数据写入磁盘。所以redis具有快速和数据持久化的特征
+					  			3 如果不将数据放在内存中，磁盘I/O速度为严重影响redis的性能
+
+			 第六组
+			   龙绪昊 ,  1 RepositoryService 	& 提供了部署，删除，读取流程资源等功能
+						  		2 RuntimeService	& 提供了启动流程、查询流程实例、设置获取流程实例变量等功能
+						  		3 TaskService	& 提供了运行时任务查询、领取、完成、删除以及变量设置等功能
+						  		4 HistoryService	& 提供了获取正在运行或已经完成的流程实例的信息的功能
+			   沈章东 ,  程序的所有自动配置都是从@SpringBootApplication引入的，它了三个重要的注解
+						  		1 @EnableAutoConfiguration用来启动自动配置，并将导入一些自动配置的类定义
+						  		2 @ComponentScan将扫描和加载应用中的一些自定义的类
+						  		3 @SpringBootConfiguration表明一个这个类提供了Spring配置
+						  		4 @EnableAutoConfiguration类中引用了SpringFactoriesLoader
+						  		5 SpringFactoriesLoader会查询META-INF/spring.factories文件中包含的JAR文件名称，这些 JAR 文件都是包含了配置信息的配置类
+						  		6 SpringFactoriesLoader进行逐个自动配置，将这些类加载到容器中。
+						  		7 同时在装载一个类的配置时，首先读取项目中的配置，只有在项目中没有相关配置的时候才启用配置的默认值。
+			   陈和伟 ,  1 Spring Cloud中采用的是Hystrix断路器
+					  			2 对特定服务调用的不可用达到一个阀值（Hystric 是5秒20次） 时断路器将会被打开，之后的请求就不会请求到该服务节点
+					  			3 避免由于单个节点出现故障导致的连锁故障
+			   李明珠 ,  1 表现层：SpringMVC	2 业务层：Spring	3 持久化层框架：Mybatis		4 权限模型：RBAC	5 JS框架：JQuery		6 前端框架：Bootstrap		7 流程框架：Activiti5		8 分布式框架：SpringBoot SpringCloud
+			   狄沈栋 ,  1 SpringBoot简化了框架的使用	2 简化了Spring众多框架中所需的大量且繁琐的配置文件		3 能够自动添加一些常用依赖
+			   潘超 ,  1 spring-boot-starter-web 嵌入tomcat和web开发需要servlet与jsp支持
+					   		2 spring-boot-starter-data-redis redis数据库支持
+					   		3 mybatis-spring-boot-starter 第三方的mybatis集成starter
+					   		4 spring-boot-starter-freemarker freemarker模板引擎
+					   		5 spring-cloud-starter-eureka eureka 服务发现和注册服务
+					   		6 spring-cloud-starter-zookeeper-discovery zookeeper 集群服务
+					   		7 spring-cloud-starter-feign feign 远程方法调用
+					   		8 spring-cloud-starter-hystrix hystrix 熔断器
+			   柯欲文 ,  通过 Maven 引入 spring-boot-devtools 依赖即可
+			   吴才进 ,  1 条件语法：<#if condition>...condition是条件	<#elseif condition2>...<#elseif condition3>...<#else>...</#if>
+					  		2 循环语法：<#list users as user></#list>users代表循环的集合 user代表循环的元素
+					  		3 获取对象属性：${user.name}
+					  		4 获取索引：${user_index}
+			   曹庭建 ,  1 排它网关		2 并行网关		3 包含网关
+			   刘云志 ,  1 服务在发布时通过配置文件指定对应的服务名和注册中心地址，将服务注册到注册中心（eureka或者zookeeper）
+					  2 调用方法：传递服务名称通过注册中心获取所有的可用实例 通过负载均衡策略调用（ribbon和feign）对应的服务
+
+			 第七组
+
+			   陈雅文 ,  1 读已提交  read-uncommitted T1事务在T2事务尚未提交时读取T2所修改的数据，不能解决任何并发问题
+					  			2 读未提交  read-committed T1事务要读取一个数据，T2事务要修改这个数据，T1要等到T2提交后才读取。可以避免脏读的并发问题。
+					  			3 可重复读  repeatable-read T1事务要求在自己执行期间，多次读取同一个数据时，数据保持不变。需要把数据锁定。能够避免脏读和不可重复读的并发问题。
+					  			4 串行化  serializable T1事务执行期间整个表锁定，能够避免脏读、不可重复读和幻读问题，但是性能低下。
+			   范博文 ,  1 DriverManager.registerDriver new com.microsoft.sqlserver.jdbc.SQLServerDriver
+					  			2 System.setProperty \ jdbc.drivers\ , \ com.microsoft.sqlserver.jdbc.SQLServerDriver\
+					  			3 Class.forName \ com.microsoft.sqlserver.jdbc.SQLServerDriver\
+			   覃田爽 ,  1 主键约束相当于唯一约束非空约束的组合，主键约束列不允许重复，也不允许出现空值。
+					  			2 如果是多列组合的主键约束，那么这些列都不允许为空值，并且组合的值不允许重复。
+					  			3 每个表最多只允许一个主键，建立主键约束可以在列级别创建，也可以在表级别上创建。
+					  			4 MySQL的主键名总是PRIMARY，当创建主键约束时，系统默认会在所在的列建立索引
+			   王国华 ,  1 脏读 事务A读取了事务B更新的数据，然后B回滚操作，那么A读取到的数据是脏数据
+					  			2 幻读系统管理员A将数据库中所有学生的成绩从具体分数改为ABCDE等级，但是系统管理员B就在这个时候插入了一条具体分数的记录，当系统管理员A改结束后发现还有一条记录没有改过来，就好像发生了幻觉一样，这就叫幻读。
+					  			3 不可重复读 事务 A 多次读取同一数据，事务 B 在事务A多次读取的过程中，对数据作了更新并提交，导致事务A多次读取同一数据时，结果 不一致。
+			   李俊元 ,  1 根据部门id分组，得到平均工资大于8000的部门id和该部门的最高工资，需要按部门id降序显示，每页显示2个数据。
+					  		2 正确的SQL：
+					  		& SELECT department_id,MAX salary
+					  		& FROM employees	GROUP BY department_id
+					  		& HAVING AVG salary  >= 8000
+					  		& ORDER BY department_id DESC
+					  		& LIMIT 2
+			   陈欢 ,  1 使用#{ param1 }、#{param2}..#{paramN}
+					  			2 使用@Param注解的方式命名参数
+			   黄远鹏 ,  1 #将传入的数据都当成一个字符串，会对传入的数据自动加上引号；最终交给JDBC处理时会转化成“?”占位符2 $将传入的数据直接显示生成在SQL中。3 使用$占位符可能会导致SQL注射攻击，能用#的地方就不要使用$，写order by子句的时候应该用$而不是#。
+			   周云飞 ,  1 #将传入的数据都当成一个字符串，会对自动传入的数据加一个双引号。能够很大程度防止sql注入。
+					  			2 $将传入的数据直接显示生成在sql中。一般用于传入数据库对象
+			   孟贤 ,  1 if和where	2 choose（when，otherwise）	3 trim	4 set	5 foreach
+			   赵东 ,  1 Union：对两个结果集进行并集操作，不包括重复行，同时进行默认规则的排序 
+					  		2 Union All：对两个结果集进行并集操作，包括重复行，不进行排序

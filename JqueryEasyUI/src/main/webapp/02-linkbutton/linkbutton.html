@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+    <base href="http://localhost:8080/"/>
+    <!-- 引入默认主题样式文件 -->
+    <link rel="stylesheet" type="text/css" href="themes/default/easyui.css"/>
+    <!-- 引入图标样式文件 -->
+    <link rel="stylesheet" type="text/css" href="themes/icon.css"/>
+    <!-- 引入jQuery主文件 -->
+    <script type="text/javascript" src="scripts/jquery.min.js"></script>
+    <!-- 引入EasyUI主文件 -->
+    <script type="text/javascript" src="scripts/jquery.easyui.min.js"></script>
+    <!-- 引入本地化文件 -->
+    <script type="text/javascript" src="scripts/easyui-lang-zh_CN.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#btnOne").linkbutton({
+                iconCls: "icon-search",
+                toggle: true,    //有复选框效果
+                group: "fruit",  //属于此组的有单选框效果
+                //给onClick事件绑定单击响应函数
+                onClick: function () {
+                    alert("点击one");
+                }
+            });
+
+            $("#btnTwo").linkbutton({
+                iconCls: "icon-cancel",
+                toggle: true,
+                group: "fruit",
+                onClick: function () {
+                    alert("点击two");
+                }
+            });
+
+            $("#btnThree").linkbutton({
+                iconCls:"icon-reload",
+                toggle:true,
+                onClick:function () {
+                    alert("点击three");
+                }
+            });
+
+            $("#btnFour").linkbutton({
+                iconCls:"icon-save",
+                toggle:true,
+                onClick:function () {
+                    alert("点击four");
+                }
+            });
+
+
+
+            $("#enableBtn").linkbutton({
+                iconCls:"icon-blank",
+                onClick:function () {
+                    //调用目标按钮的enable方法，启用按钮
+                    $("#btnThree").linkbutton("enable");
+                }
+            });
+
+            $("#disableBtn").linkbutton({
+                iconCls: "icon-blank",
+                onClick: function () {
+                    //调用目标按钮的disable方法，禁用按钮
+                    $("#btnThree").linkbutton("disable");
+                }
+            });
+
+            $("#selectBtn").linkbutton({
+                iconCls: "icon-blank",
+                onClick:function () {
+                    //调用目标按钮的select方法，选中按钮
+                    $("#btnThree").linkbutton("select");
+                }
+            });
+
+            $("#unselectBtn").linkbutton({
+                iconCls: "icon-blank",
+                onClick: function () {
+                    //调用目标按钮的unselect方法，取消选中按钮。如果目标按钮设置了group属性，那么取消选中则不可用
+                    $("#btnThree").linkbutton("unselect");
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+<a id="btnOne">点击One</a>
+<a id="btnTwo">点击Two</a>
+<a id="btnThree">点击Three</a>
+<a id="btnFour">点击Four</a>
+<hr/>
+<a id="enableBtn">启用按钮</a>
+<a id="disableBtn">禁用按钮</a>
+<a id="selectBtn">选中按钮</a>
+<a id="unselectBtn">取消选中按钮</a>
+</body>
+</html>
